@@ -707,7 +707,61 @@ const M = {
   glassFr:   matPhong(0x60666C),                                         // door frames
   blind:     matLambert(0xCAD5CD, { transparent: true, opacity: 0.55 }), // frosted door blinds
   ceiling:   matPhong(0xC5BFB8),                                         // high drop ceiling tiles
-  ceilLight: new THREE.MeshBasicMaterial({ color: 0xFFFFFF }),           // recessed LED light panels
+  ceilLight: new THREE.MeshBasicMaterial({ color: 0xFFF5D6 }),           // recessed LED light panels (warm cream)
+  hallLocker: matPhong(0x2B4C7E, { shininess: 40 }),                     // realistic navy-blue lockers
+  hallBoard:  matPhong(0xB87333, { shininess: 15 }),                     // cork bulletin board
+  baseboard:  matPhong(0x383838),                                        // dark skirting
+
+  // Library Environment (Matching Reference Image 1)
+  libWall:      matPhong(0xD6CABE),                                       // warm library wall
+  libCeil:      matPhong(0xD0C8BD),                                       // acoustic ceiling tiles
+  libBeam:      matPhong(0xB5ACA0),                                       // structural ceiling cross-beams
+  libCarpet:    matPhong(0x2E2428, { shininess: 8 }),                     // dark plum-charcoal aisle carpet
+  libFloorEdge: matPhong(0x9E866D, { shininess: 55, specular: 0x333330 }),// polished linoleum aisle border
+  libStackDark: matPhong(0x1E1B22, { shininess: 30 }),                    // dark metal/wood bookshelf frame
+  libShelfWood: matPhong(0x2E2522, { shininess: 25 }),                    // shelf divider boards
+  libBookEnd:   matPhong(0xF0F3F7, { shininess: 60 }),                    // white curved metal bookends
+  libWarmLight: new THREE.MeshBasicMaterial({ color: 0xFFF3D8 }),         // warm fluorescent light troffers
+  libStepStool: matPhong(0x2B6CB0, { shininess: 40 }),                    // classic blue rolling step-stool
+  libStepRubber:matPhong(0x1A202C),                                       // black rubber bumper
+  bookSpines: [
+    matPhong(0x1A365D), // Deep Navy
+    matPhong(0x9B2C2C), // Crimson Red
+    matPhong(0x22543D), // Forest Green
+    matPhong(0xB7791F), // Warm Gold
+    matPhong(0x2B6CB0), // Royal Blue
+    matPhong(0xC53030), // Bright Red
+    matPhong(0x2F855A), // Emerald Green
+    matPhong(0xDD6B20), // Burnt Orange
+    matPhong(0x6B46C1), // Deep Violet
+    matPhong(0xF7FAFC), // White Spine
+    matPhong(0x2D3748), // Dark Charcoal
+    matPhong(0x319795), // Teal
+  ],
+
+  // Cafeteria Environment (Matching Reference Image 2)
+  cafCeilDark:     matPhong(0x14161A),                                    // dark exposed ceiling
+  cafDuctMetal:    matPhong(0x333842, { shininess: 60 }),                 // industrial metal ducts
+  cafBafflePurple: matPhong(0x9B7BA8, { shininess: 25 }),                 // lavender/purple acoustic discs
+  cafBaffleGrey:   matPhong(0xD0D4DC, { shininess: 25 }),                 // light grey acoustic discs
+  cafBaffleWhite:  matPhong(0xF5F6FA, { shininess: 25 }),                 // clean off-white acoustic discs
+  cafPendantLight: new THREE.MeshBasicMaterial({ color: 0xFFFFFF }),      // white cylindrical downlights
+  cafCable:        matPhong(0x718096),                                    // thin suspension cables
+  cafFloorA:       matPhong(0xE8ECF0, { shininess: 75, specular: 0x444448 }), // polished light grey tile
+  cafFloorB:       matPhong(0xDDE3EA, { shininess: 75, specular: 0x444448 }), // polished cool white tile
+  cafWallWhite:    matPhong(0xF8F9FA),                                    // clean bright white walls
+  cafPillar:       matPhong(0xFFFFFF, { shininess: 35 }),                 // white structural columns
+  cafBaseboard:    matPhong(0x2D3748),                                    // dark grey wall skirting
+  cafTableBirch:   matPhong(0xE4CFA7, { shininess: 45 }),                 // blonde birch wood table top
+  cafTableEdge:    matPhong(0x333840),                                    // black bumper edge
+  cafTableFrame:   matPhong(0xA0AEC0, { shininess: 60 }),                 // tubular silver metal frame
+  cafTableWheel:   matPhong(0x1A202C),                                    // caster wheels
+  cafStoolPurple:  matPhong(0x8E24AA, { shininess: 30 }),                 // vibrant purple stool seats
+  cafStoolGrey:    matPhong(0x546E7A, { shininess: 30 }),                 // slate grey stool seats
+  cafMenuTV:       matPhong(0x0066CC, { emissive: 0x003388 }),            // glowing blue digital menu screen
+  cafDoorWood:     matPhong(0x8C6239, { shininess: 30 }),                 // wooden cafeteria exit doors
+  cafTrashGreen:   matPhong(0x2E7D32),                                    // green waste receptacle
+  cafFireRed:      matPhong(0xD32F2F),                                    // red fire extinguisher
 
   // Professor Colors
   profSuit:  matPhong(0x181822),
@@ -721,11 +775,13 @@ const M = {
   samosaBase:  matPhong(0xB86514, { shininess: 25 }),                    // Crimped crispy base
   samosaTip:   matPhong(0x8C4508),                                       // Dark crispy tip
 
-  // Obstacle Colors
+  // Obstacle Colors & NPC Details
   stu1:      matPhong(0x3B8246),
   stu2:      matPhong(0xA83232),
   stu3:      matPhong(0x7842A6),
   stuJeans:  matPhong(0x32405C),
+  sneakers:  matPhong(0xE2E8F0),
+  skin:      matPhong(0xF0BE78),
   bagObs:    matPhong(0x8C4422),
   trashCan:  matPhong(0x506050),
   trashLid:  matPhong(0x7B8C7B),
@@ -744,6 +800,12 @@ const M = {
   bottle:    new THREE.MeshPhongMaterial({ color: 0x72C2E8, transparent: true, opacity: 0.7, shininess: 80 }),
   skateboard:matPhong(0xFF5500),
   skateWheel:matPhong(0x1A1A1A),
+
+  // Powerup Materials
+  energyCan:  matPhong(0x00FFCC),
+  magnetRed:  matPhong(0xDD0000),
+  magnetSil:  matPhong(0xC0C0C0),
+  hallPass:   matPhong(0xFFEF99),
 };
 
 // ================================================================
@@ -779,27 +841,11 @@ function addCyl(g, rt, rb, h, material, x=0, y=0, z=0, rx=0, ry=0, rz=0, seg=10)
 //  HALLWAY CHUNK BUILDER
 // ================================================================
 
-// Zone color sets - updated when zone changes
-let ZONE_COLORS = {
-  floorA: 0x808080,
-  floorB: 0xA0A0A0,
-  wallUp:  0xDDD8C8,
-  wallLow: 0xB8B4A8,
-};
-function getZoneIndex() {
-  return Math.floor(Math.max(0, -pZ) / 1000) % 3;
-}
-function applyZoneMats(zIdx) {
-  if (zIdx === 0) { // Hallway
-    ZONE_COLORS.floorA = 0x808080; ZONE_COLORS.floorB = 0xA0A0A0;
-    ZONE_COLORS.wallUp  = 0xDDD8C8; ZONE_COLORS.wallLow = 0xB8B4A8;
-  } else if (zIdx === 1) { // Library
-    ZONE_COLORS.floorA = 0x7a5c3a; ZONE_COLORS.floorB = 0x5c3d20;
-    ZONE_COLORS.wallUp  = 0xe8d5b0; ZONE_COLORS.wallLow = 0xc8a870;
-  } else { // Cafeteria
-    ZONE_COLORS.floorA = 0x90d0e8; ZONE_COLORS.floorB = 0xc0e0f0;
-    ZONE_COLORS.wallUp  = 0xfff8f0; ZONE_COLORS.wallLow = 0xffe0c8;
-  }
+// Zone constants
+const ZONE_LEN = 400; // 400m per zone for balanced, exciting gameplay
+
+function getZoneIndex(z) {
+  return Math.floor(Math.max(0, -z) / ZONE_LEN) % 3;
 }
 
 function buildChunk(zStart) {
@@ -809,155 +855,325 @@ function buildChunk(zStart) {
   const H = HALL_H;
   const tileS = 2.0;
 
-  // ── FLOOR (Zone-Aware Tiles) ──
-  const chunkZone = Math.floor(Math.max(0, -zStart) / 1000) % 3;
-  applyZoneMats(chunkZone);
-  const chunkFloorA = matPhong(ZONE_COLORS.floorA);
-  const chunkFloorB = matPhong(ZONE_COLORS.floorB);
-  const chunkWallUp  = matPhong(ZONE_COLORS.wallUp);
-  const chunkWallLow = matPhong(ZONE_COLORS.wallLow);
-  const nTZ = Math.round(L / tileS);
-  const nTX = Math.round(W / tileS);
-  for (let tz = 0; tz < nTZ; tz++) {
-    for (let tx = 0; tx < nTX; tx++) {
-      const m = mesh(
-        box(tileS - 0.02, 0.04, tileS - 0.02),
-        (tx + tz) % 2 === 0 ? chunkFloorA : chunkFloorB,
-        { shadow: false, recv: true }
-      );
-      m.position.set(
-        -W/2 + tx * tileS + tileS/2,
-        -0.02,
-        zStart - tz * tileS - tileS/2
-      );
-      g.add(m);
-    }
-  }
+  const chunkZone = getZoneIndex(zStart);
 
-  // ── CEILING ──
-  addBox(g, W + 0.4, 0.15, L, M.ceiling, 0, H, zStart - L/2);
-
-  // Recessed LED Panels (every 8 units)
-  const numPanels = Math.round(L / 8);
-  for (let i = 0; i < numPanels; i++) {
-    const pz = zStart - 4 - i * 8;
-    addBox(g, W * 0.5, 0.06, 2.4, M.ceilLight, 0, H - 0.04, pz);
-  }
-
-  // ── LEFT WALL ──
-  addBox(g, 0.16, H * 0.55, L, chunkWallUp,  -W/2 - 0.08, H * 0.725, zStart - L/2);
-  addBox(g, 0.16, H * 0.45, L, chunkWallLow, -W/2 - 0.08, H * 0.225, zStart - L/2);
-  addBox(g, 0.22, 0.08, L, M.metal, -W/2 - 0.1, H * 0.45, zStart - L/2);
-
-  const numWood = Math.round(L / 12);
-  for (let i = 0; i < numWood; i++) {
-    addBox(g, 0.24, H * 0.35, 4.4, M.woodPanel, -W/2 - 0.12, H * 0.22, zStart - 6 - i * 12);
-  }
-
-  for (let i = 0; i <= numWood; i++) {
-    addBox(g, 0.2, H, 0.2, M.metal, -W/2 + 0.1, H/2, zStart - i * 12);
-  }
-
-  // ── RIGHT WALL (Glass Classroom Doors) ──
-  addBox(g, 0.16, H, L, chunkWallUp, W/2 + 0.08, H/2, zStart - L/2);
-
-  const doorW = 2.4;
-  const doorH = H * 0.75;
-  const doorStep = 6.4;
-  const numDoors = Math.round(L / doorStep);
-
-  for (let i = 0; i < numDoors; i++) {
-    const dz = zStart - 3.2 - i * doorStep;
-
-    const gl = mesh(box(0.08, doorH, doorW), M.glass, { shadow: false });
-    gl.position.set(W/2, doorH/2, dz);
-    g.add(gl);
-
-    for (let s = 0; s < 8; s++) {
-      const bl = mesh(box(0.1, 0.08, doorW - 0.12), M.blind, { shadow: false });
-      bl.position.set(W/2, (s + 0.5) * (doorH / 8), dz);
-      g.add(bl);
-    }
-
-    addBox(g, 0.18, 0.12, doorW + 0.16, M.glassFr, W/2, doorH + 0.06, dz);
-    addBox(g, 0.18, doorH, 0.09, M.glassFr, W/2, doorH/2, dz - doorW/2);
-    addBox(g, 0.18, doorH, 0.09, M.glassFr, W/2, doorH/2, dz + doorW/2);
-    addBox(g, 0.22, 0.06, 0.3, M.metal, W/2, doorH * 0.5, dz - 0.6);
-  }
-
-  for (let i = 0; i <= numDoors; i++) {
-    addBox(g, 0.2, H, 0.2, M.metal, W/2 - 0.1, H/2, zStart - i * doorStep);
-  }
-
-
-  // Zone-specific decorations
-  if (chunkZone === 0) { // Hallway - lockers & bulletin boards
-    if (Math.random() > 0.3) {
-      const lockers = mesh(box(0.6, 2.2, 5.0), M.lockers);
-      lockers.castShadow = true;
-      lockers.position.set(-W/2 + 0.3, 1.1, zStart - L/2 + 1);
-      g.add(lockers);
-    }
-    if (Math.random() > 0.4) {
-      const poster = mesh(box(0.1, 1.4, 0.9), M.board);
-      poster.position.set(W/2 - 0.05, 2.0, zStart - L/2 - 2);
-      g.add(poster);
-    }
-  } else if (chunkZone === 1) { // Library - wooden bookshelves
-    const shelfMat = matPhong(0x3e2723);
-    const bookMats = [matPhong(0xff5252), matPhong(0x4caf50), matPhong(0x2196f3), matPhong(0xff9800)];
-    for (let si = 0; si < 2; si++) {
-      const sz = zStart - (si + 1) * (L / 3);
-      const shelfGrp = new THREE.Group();
-      addBox(shelfGrp, 1.2, 3.0, 0.4, shelfMat, 0, 1.5, 0); // back panel
-      addBox(shelfGrp, 1.2, 0.08, 0.4, shelfMat, 0, 0.5, 0); // shelf 1
-      addBox(shelfGrp, 1.2, 0.08, 0.4, shelfMat, 0, 1.2, 0); // shelf 2
-      addBox(shelfGrp, 1.2, 0.08, 0.4, shelfMat, 0, 1.9, 0); // shelf 3
-      addBox(shelfGrp, 1.2, 0.08, 0.4, shelfMat, 0, 2.6, 0); // shelf 4
-      // books on shelves
-      for (let b = 0; b < 6; b++) {
-        addBox(shelfGrp, 0.14, 0.55, 0.38, bookMats[b % bookMats.length], -0.48 + b * 0.18, 0.83, 0);
+  // ── 1. FLOOR BY ZONE ──
+  if (chunkZone === 0) {
+    // Hallway: Seamless checkered marble tiles
+    const nTZ = Math.round(L / tileS);
+    const nTX = Math.round(W / tileS);
+    for (let tz = 0; tz < nTZ; tz++) {
+      for (let tx = 0; tx < nTX; tx++) {
+        const m = mesh(
+          box(tileS - 0.02, 0.04, tileS - 0.02),
+          (tx + tz) % 2 === 0 ? M.floorA : M.floorB,
+          { shadow: false, recv: true }
+        );
+        m.position.set(-W/2 + tx * tileS + tileS/2, -0.02, zStart - tz * tileS - tileS/2);
+        g.add(m);
       }
-      for (let b = 0; b < 6; b++) {
-        addBox(shelfGrp, 0.14, 0.55, 0.38, bookMats[(b+2) % bookMats.length], -0.48 + b * 0.18, 1.53, 0);
-      }
-      shelfGrp.position.set(-W/2 + 0.7, 0, sz);
-      shelfGrp.castShadow = true;
-      g.add(shelfGrp);
     }
-    // Reading tables
-    if (Math.random() > 0.5) {
-      const tableMat = matPhong(0x5d4037);
+  } else if (chunkZone === 1) {
+    // Library (Image 1): Deep plum-charcoal carpet runner down center aisle with polished linoleum edges
+    const carpetW = 4.8;
+    const borderW = (W - carpetW) / 2;
+    // Center carpet runner
+    addBox(g, carpetW, 0.04, L, M.libCarpet, 0, -0.02, zStart - L/2);
+    // Left & Right polished floor borders under the bookshelves
+    addBox(g, borderW, 0.04, L, M.libFloorEdge, -W/2 + borderW/2, -0.02, zStart - L/2);
+    addBox(g, borderW, 0.04, L, M.libFloorEdge,  W/2 - borderW/2, -0.02, zStart - L/2);
+  } else {
+    // Cafeteria (Image 2): Polished light-grey large porcelain tiles
+    const cTileS = 2.5;
+    const nTZ = Math.round(L / cTileS);
+    const nTX = Math.round(W / cTileS);
+    for (let tz = 0; tz < nTZ; tz++) {
+      for (let tx = 0; tx < nTX; tx++) {
+        const m = mesh(
+          box(cTileS - 0.03, 0.04, cTileS - 0.03),
+          (tx + tz) % 2 === 0 ? M.cafFloorA : M.cafFloorB,
+          { shadow: false, recv: true }
+        );
+        m.position.set(-W/2 + tx * cTileS + cTileS/2, -0.02, zStart - tz * cTileS - cTileS/2);
+        g.add(m);
+      }
+    }
+  }
+
+  // ── 2. CEILING BY ZONE ──
+  if (chunkZone === 0) {
+    // Hallway: Recessed LED drop ceiling
+    addBox(g, W + 0.4, 0.15, L, M.ceiling, 0, H, zStart - L/2);
+    const numPanels = Math.round(L / 8);
+    for (let i = 0; i < numPanels; i++) {
+      addBox(g, W * 0.45, 0.06, 2.4, M.ceilLight, 0, H - 0.04, zStart - 4 - i * 8);
+    }
+  } else if (chunkZone === 1) {
+    // Library (Image 1): Acoustic beige tile ceiling with continuous warm fluorescent light panels & cross-beams
+    addBox(g, W + 0.4, 0.15, L, M.libCeil, 0, H, zStart - L/2);
+    // Continuous warm light troffers down center
+    const numLights = Math.round(L / 8);
+    for (let i = 0; i < numLights; i++) {
+      const lz = zStart - 4 - i * 8;
+      addBox(g, 1.8, 0.08, 5.4, M.libWarmLight, 0, H - 0.04, lz);
+      addBox(g, 2.0, 0.05, 5.6, M.metal, 0, H - 0.02, lz); // housing frame
+    }
+    // Structural ceiling beams crossing corridor
+    const numBeams = Math.round(L / 16);
+    for (let i = 0; i <= numBeams; i++) {
+      addBox(g, W + 0.2, 0.45, 0.7, M.libBeam, 0, H - 0.22, zStart - i * 16);
+    }
+  } else {
+    // Cafeteria (Image 2): Dark exposed industrial ceiling + Suspended Circular Acoustic Baffle Discs + Pendants
+    addBox(g, W + 0.4, 0.15, L, M.cafCeilDark, 0, H, zStart - L/2);
+    // Metal HVAC ducts along the upper walls
+    addBox(g, 0.8, 0.5, L, M.cafDuctMetal, -W/2 + 1.2, H - 0.4, zStart - L/2);
+    addBox(g, 0.6, 0.4, L, M.cafDuctMetal,  W/2 - 1.2, H - 0.5, zStart - L/2);
+
+    // Hanging Circular Acoustic Baffle Discs (Lavender, Grey, White)
+    const baffleConfigs = [
+      { x: -2.4, y: 5.1, dz: 6,  r: 1.8, mat: M.cafBafflePurple },
+      { x:  0.2, y: 5.4, dz: 11, r: 2.1, mat: M.cafBaffleWhite  },
+      { x:  2.6, y: 5.0, dz: 16, r: 1.7, mat: M.cafBaffleGrey   },
+      { x: -1.6, y: 4.8, dz: 22, r: 1.9, mat: M.cafBaffleGrey   },
+      { x:  1.8, y: 5.2, dz: 28, r: 2.0, mat: M.cafBafflePurple },
+      { x: -2.2, y: 5.3, dz: 35, r: 1.7, mat: M.cafBaffleWhite  },
+      { x:  0.0, y: 4.9, dz: 42, r: 2.2, mat: M.cafBafflePurple },
+      { x:  2.4, y: 5.3, dz: 48, r: 1.8, mat: M.cafBaffleGrey   },
+      { x: -1.8, y: 5.1, dz: 54, r: 2.0, mat: M.cafBaffleWhite  },
+      { x:  1.6, y: 4.8, dz: 60, r: 1.6, mat: M.cafBafflePurple },
+    ];
+    baffleConfigs.forEach(bc => {
+      const bz = zStart - bc.dz;
+      // The horizontal circular disc
+      addCyl(g, bc.r, bc.r, 0.08, bc.mat, bc.x, bc.y, bz, 0, 0, 0, 24);
+      // Suspension wire from ceiling
+      const wireH = H - bc.y;
+      addCyl(g, 0.015, 0.015, wireH, M.cafCable, bc.x, bc.y + wireH/2, bz, 0, 0, 0, 6);
+    });
+
+    // Cylindrical Pendant Downlights
+    for (let i = 0; i < Math.round(L / 12); i++) {
+      const pz = zStart - 6 - i * 12;
+      const px = (i % 2 === 0 ? -1.0 : 1.0);
+      const py = 4.6;
+      addCyl(g, 0.18, 0.18, 0.35, M.cafPendantLight, px, py, pz, 0, 0, 0, 12);
+      addCyl(g, 0.012, 0.012, H - py, M.cafCable, px, py + (H - py)/2, pz, 0, 0, 0, 6);
+    }
+  }
+
+  // ── 3. WALLS & ARCHITECTURE BY ZONE ──
+  if (chunkZone === 0) {
+    // ── Hallway Walls ──
+    // Left Wall
+    addBox(g, 0.16, H * 0.55, L, M.wallUp,  -W/2 - 0.08, H * 0.725, zStart - L/2);
+    addBox(g, 0.16, H * 0.45, L, M.wallLow, -W/2 - 0.08, H * 0.225, zStart - L/2);
+    addBox(g, 0.22, 0.08, L, M.metal, -W/2 - 0.1, H * 0.45, zStart - L/2);
+    addBox(g, 0.22, 0.18, L, M.baseboard, -W/2 - 0.08, 0.09, zStart - L/2);
+
+    const numWood = Math.round(L / 12);
+    for (let i = 0; i < numWood; i++) {
+      addBox(g, 0.24, H * 0.35, 4.4, M.woodPanel, -W/2 - 0.12, H * 0.22, zStart - 6 - i * 12);
+    }
+    for (let i = 0; i <= numWood; i++) {
+      addBox(g, 0.2, H, 0.2, M.metal, -W/2 + 0.1, H/2, zStart - i * 12);
+    }
+
+    // Right Wall (Classroom Glass Doors & Blind Slats)
+    addBox(g, 0.16, H, L, M.wallUp, W/2 + 0.08, H/2, zStart - L/2);
+    addBox(g, 0.22, 0.18, L, M.baseboard, W/2 + 0.08, 0.09, zStart - L/2);
+
+    const doorW = 2.4;
+    const doorH = H * 0.75;
+    const doorStep = 8.0;
+    const numDoors = Math.round(L / doorStep);
+    for (let i = 0; i < numDoors; i++) {
+      const dz = zStart - 4.0 - i * doorStep;
+      const gl = mesh(box(0.08, doorH, doorW), M.glass, { shadow: false });
+      gl.position.set(W/2, doorH/2, dz);
+      g.add(gl);
+      for (let s = 0; s < 6; s++) {
+        const bl = mesh(box(0.09, 0.08, doorW - 0.16), M.blind, { shadow: false });
+        bl.position.set(W/2, (s + 1.2) * (doorH / 8), dz);
+        g.add(bl);
+      }
+      addBox(g, 0.18, 0.12, doorW + 0.16, M.glassFr, W/2, doorH + 0.06, dz);
+      addBox(g, 0.18, doorH, 0.09, M.glassFr, W/2, doorH/2, dz - doorW/2);
+      addBox(g, 0.18, doorH, 0.09, M.glassFr, W/2, doorH/2, dz + doorW/2);
+    }
+    for (let i = 0; i <= numDoors; i++) {
+      addBox(g, 0.2, H, 0.2, M.metal, W/2 - 0.1, H/2, zStart - i * doorStep);
+    }
+
+    // High quality Hallway Props (Realistic blue lockers & corkboards - NO white boxes!)
+    if (Math.random() > 0.25) {
+      const lockerZ = zStart - L/2 + 2;
+      const lk = new THREE.Group();
+      addBox(lk, 0.65, 2.3, 4.6, M.hallLocker, 0, 1.15, 0);
+      for (let d = 0; d < 4; d++) {
+        addBox(lk, 0.68, 2.2, 0.04, M.metal, 0, 1.15, -1.7 + d * 1.15);
+        addBox(lk, 0.70, 0.12, 0.04, M.metal, 0, 1.6, -1.3 + d * 1.15);
+      }
+      lk.position.set(-W/2 + 0.32, 0, lockerZ);
+      g.add(lk);
+    }
+    if (Math.random() > 0.35) {
+      const boardZ = zStart - L/2 - 4;
+      const bd = new THREE.Group();
+      addBox(bd, 0.08, 1.4, 2.2, M.hallBoard, 0, 2.1, 0);
+      addBox(bd, 0.10, 1.48, 2.28, M.chairWood, 0, 2.1, 0);
+      addBox(bd, 0.11, 0.35, 0.28, M.bannerWhi, 0, 2.2, -0.6);
+      addBox(bd, 0.11, 0.40, 0.32, matPhong(0xffeb3b), 0, 2.0, 0.1);
+      addBox(bd, 0.11, 0.30, 0.25, matPhong(0x4fc3f7), 0, 2.2, 0.7);
+      bd.position.set(W/2 - 0.05, 0, boardZ);
+      g.add(bd);
+    }
+  } else if (chunkZone === 1) {
+    // ── Library Walls & Towering Book Stacks (Matching Reference Image 1) ──
+    addBox(g, 0.16, H, L, M.libWall, -W/2 - 0.08, H/2, zStart - L/2);
+    addBox(g, 0.16, H, L, M.libWall,  W/2 + 0.08, H/2, zStart - L/2);
+    addBox(g, 0.22, 0.18, L, M.baseboard, -W/2 - 0.08, 0.09, zStart - L/2);
+    addBox(g, 0.22, 0.18, L, M.baseboard,  W/2 + 0.08, 0.09, zStart - L/2);
+
+    // Continuous Tall Book Stacks on BOTH sides of the aisle!
+    const stackLen = 14.5;
+    const numSections = 4;
+    const shelfTiers = 5;
+    const shelfHeight = 4.8;
+
+    for (let side = -1; side <= 1; side += 2) {
+      const stackX = side * (W/2 - 0.85);
+
+      for (let sec = 0; sec < numSections; sec++) {
+        const secZ = zStart - 2 - sec * (L / numSections) - (stackLen / 2);
+        const stackGrp = new THREE.Group();
+
+        // Dark metal/wood back panel
+        addBox(stackGrp, 0.9, shelfHeight, stackLen, M.libStackDark, 0, shelfHeight/2, 0);
+
+        // Vertical dividers / upright frames
+        const numUprights = Math.round(stackLen / 3.0);
+        for (let u = 0; u <= numUprights; u++) {
+          const uz = -stackLen/2 + u * (stackLen / numUprights);
+          addBox(stackGrp, 1.0, shelfHeight + 0.08, 0.12, M.libStackDark, 0, shelfHeight/2, uz);
+        }
+
+        // 5 Horizontal Shelf Tiers
+        for (let tier = 0; tier < shelfTiers; tier++) {
+          const sy = 0.6 + tier * 0.95;
+          addBox(stackGrp, 0.96, 0.08, stackLen, M.libShelfWood, 0, sy, 0);
+
+          // Packed Colorful Books along each shelf tier!
+          const numBooks = Math.round(stackLen / 0.24);
+          for (let b = 0; b < numBooks; b++) {
+            const bz = -stackLen/2 + 0.15 + b * 0.24;
+            const bHeight = 0.55 + ((b * 7 + tier * 3) % 5) * 0.06;
+            const bDepth = 0.65 + ((b * 3) % 4) * 0.04;
+            const colIdx = (b * 3 + tier * 5 + sec * 2) % M.bookSpines.length;
+            const bookMat = M.bookSpines[colIdx];
+            addBox(stackGrp, bDepth, bHeight, 0.20, bookMat, 0, sy + bHeight/2 + 0.04, bz);
+          }
+
+          // Distinctive White Curved Metal Bookends (matching Image 1)
+          for (let be = 0; be <= 3; be++) {
+            const bez = -stackLen/2 + 0.6 + be * 4.2;
+            addBox(stackGrp, 0.82, 0.40, 0.06, M.libBookEnd, 0, sy + 0.22, bez);
+          }
+        }
+
+        // Top canopy ledge
+        addBox(stackGrp, 1.05, 0.14, stackLen + 0.1, M.libStackDark, 0, shelfHeight + 0.07, 0);
+
+        stackGrp.position.set(stackX, 0, secZ);
+        stackGrp.castShadow = true;
+        g.add(stackGrp);
+      }
+    }
+
+    // Classic Rolling 2-Step Library Kick-Step Stools (seen in Image 1)
+    for (let st = 0; st < 2; st++) {
+      const stoolZ = zStart - 12 - st * 26;
+      const stoolX = (st % 2 === 0 ? -1 : 1) * (W/2 - 1.85);
+      const stool = new THREE.Group();
+      addCyl(stool, 0.48, 0.52, 0.24, M.libStepStool, 0, 0.12, 0, 0, 0, 0, 16);
+      addCyl(stool, 0.53, 0.53, 0.04, M.libStepRubber, 0, 0.02, 0, 0, 0, 0, 16);
+      addCyl(stool, 0.35, 0.38, 0.22, M.libStepStool, 0, 0.35, 0, 0, 0, 0, 16);
+      addCyl(stool, 0.36, 0.36, 0.03, M.libStepRubber, 0, 0.47, 0, 0, 0, 0, 16);
+      stool.position.set(stoolX, 0, stoolZ);
+      g.add(stool);
+    }
+  } else {
+    // ── Cafeteria Walls & Dining Tables (Matching Reference Image 2) ──
+    addBox(g, 0.16, H, L, M.cafWallWhite, -W/2 - 0.08, H/2, zStart - L/2);
+    addBox(g, 0.16, H, L, M.cafWallWhite,  W/2 + 0.08, H/2, zStart - L/2);
+    addBox(g, 0.22, 0.18, L, M.cafBaseboard, -W/2 - 0.08, 0.09, zStart - L/2);
+    addBox(g, 0.22, 0.18, L, M.cafBaseboard,  W/2 + 0.08, 0.09, zStart - L/2);
+
+    // Stately Square White Structural Pillars/Columns (matching Image 2)
+    const numPillars = Math.round(L / 16);
+    for (let p = 0; p <= numPillars; p++) {
+      const pz = zStart - p * 16;
+      addBox(g, 0.75, H, 0.75, M.cafPillar, -W/2 + 0.45, H/2, pz);
+      addBox(g, 0.75, H, 0.75, M.cafPillar,  W/2 - 0.45, H/2, pz);
+    }
+
+    // Cafeteria Wall Details: Digital Blue Menu Screen & Doors
+    const menuZ = zStart - L * 0.35;
+    addBox(g, 0.06, 1.25, 2.2, M.cafMenuTV, W/2 - 0.04, 2.8, menuZ);
+    addBox(g, 0.08, 1.35, 2.3, M.metal, W/2 - 0.02, 2.8, menuZ);
+
+    const doorZ = zStart - L * 0.75;
+    addBox(g, 0.08, 2.6, 1.3, M.cafDoorWood, -W/2 + 0.04, 1.3, doorZ - 0.7);
+    addBox(g, 0.08, 2.6, 1.3, M.cafDoorWood, -W/2 + 0.04, 1.3, doorZ + 0.7);
+    addBox(g, 0.10, 0.9, 0.35, M.glass, -W/2 + 0.04, 1.8, doorZ - 0.7);
+    addBox(g, 0.10, 0.9, 0.35, M.glass, -W/2 + 0.04, 1.8, doorZ + 0.7);
+
+    addCyl(g, 0.12, 0.12, 0.65, M.cafFireRed, W/2 - 0.25, 1.8, zStart - 10);
+    addCyl(g, 0.32, 0.28, 0.90, M.cafTrashGreen, -W/2 + 0.6, 0.45, zStart - 8);
+
+    // Cafeteria Fold-Out Tables with Attached Purple & Grey Round Stools (Image 2)
+    const numTables = 3;
+    for (let t = 0; t < numTables; t++) {
+      const tz = zStart - 8 - t * 18;
+      const tx = (t % 2 === 0 ? -1 : 1) * (W/2 - 1.8);
+      const stoolMat = (t % 2 === 0 ? M.cafStoolPurple : M.cafStoolGrey);
+
       const tableGrp = new THREE.Group();
-      addBox(tableGrp, 2.0, 0.08, 1.0, tableMat, 0, 0.75, 0);
-      addBox(tableGrp, 0.08, 0.75, 0.08, tableMat, -0.9, 0.38, -0.4);
-      addBox(tableGrp, 0.08, 0.75, 0.08, tableMat,  0.9, 0.38, -0.4);
-      addBox(tableGrp, 0.08, 0.75, 0.08, tableMat, -0.9, 0.38,  0.4);
-      addBox(tableGrp, 0.08, 0.75, 0.08, tableMat,  0.9, 0.38,  0.4);
-      tableGrp.position.set(W/2 - 1.5, 0, zStart - L * 0.6);
+      const tLen = 4.8;
+      const tWid = 1.3;
+
+      // Blonde birch table top with rounded ends
+      addBox(tableGrp, tWid, 0.08, tLen, M.cafTableBirch, 0, 0.82, 0);
+      addCyl(tableGrp, tWid/2, tWid/2, 0.08, M.cafTableBirch, 0, 0.82, -tLen/2, 0, 0, 0, 16);
+      addCyl(tableGrp, tWid/2, tWid/2, 0.08, M.cafTableBirch, 0, 0.82,  tLen/2, 0, 0, 0, 16);
+
+      // Silver metal framework undercarriage & legs
+      const legZ = [-1.6, 0, 1.6];
+      legZ.forEach(lz => {
+        addCyl(tableGrp, 0.04, 0.04, 0.80, M.cafTableFrame, -tWid * 0.35, 0.40, lz, 0, 0, 0, 8);
+        addCyl(tableGrp, 0.04, 0.04, 0.80, M.cafTableFrame,  tWid * 0.35, 0.40, lz, 0, 0, 0, 8);
+        addBox(tableGrp, tWid * 0.75, 0.06, 0.06, M.cafTableFrame, 0, 0.35, lz);
+        addCyl(tableGrp, 0.05, 0.05, 0.08, M.cafTableWheel, -tWid * 0.35, 0.05, lz, Math.PI/2, 0, 0, 8);
+        addCyl(tableGrp, 0.05, 0.05, 0.08, M.cafTableWheel,  tWid * 0.35, 0.05, lz, Math.PI/2, 0, 0, 8);
+      });
+      addBox(tableGrp, 0.08, 0.08, tLen, M.cafTableFrame, 0, 0.45, 0);
+
+      // Attached circular swivel stools (4 per side = 8 total stools)
+      const stoolPositionsZ = [-1.8, -0.6, 0.6, 1.8];
+      stoolPositionsZ.forEach(sz => {
+        [-1, 1].forEach(side => {
+          const sx = side * (tWid/2 + 0.35);
+          const sy = 0.50;
+          addCyl(tableGrp, 0.03, 0.03, 0.50, M.cafTableFrame, sx, sy/2, sz, 0, 0, 0, 8);
+          addBox(tableGrp, 0.35, 0.04, 0.04, M.cafTableFrame, side * (tWid/2 + 0.15), 0.25, sz);
+          addCyl(tableGrp, 0.22, 0.22, 0.06, stoolMat, sx, sy, sz, 0, 0, 0, 16);
+          addCyl(tableGrp, 0.23, 0.23, 0.02, M.cafTableEdge, sx, sy - 0.03, sz, 0, 0, 0, 16);
+        });
+      });
+
+      tableGrp.position.set(tx, 0, tz);
+      tableGrp.castShadow = true;
       g.add(tableGrp);
-    }
-  } else if (chunkZone === 2) { // Cafeteria - lunch tables & trays
-    const tableMat = matPhong(0xffffff);
-    const benchMat = matPhong(0xb0bec5);
-    for (let ti = 0; ti < 2; ti++) {
-      const tz = zStart - (ti * 2 + 1) * (L / 5);
-      const tGrp = new THREE.Group();
-      // Table top
-      addBox(tGrp, 3.0, 0.1, 0.8, tableMat, 0, 0.75, 0);
-      // Legs
-      addBox(tGrp, 0.1, 0.75, 0.1, benchMat, -1.4, 0.38, -0.35);
-      addBox(tGrp, 0.1, 0.75, 0.1, benchMat,  1.4, 0.38, -0.35);
-      addBox(tGrp, 0.1, 0.75, 0.1, benchMat, -1.4, 0.38,  0.35);
-      addBox(tGrp, 0.1, 0.75, 0.1, benchMat,  1.4, 0.38,  0.35);
-      // Benches
-      addBox(tGrp, 3.0, 0.08, 0.4, benchMat, 0, 0.44, -0.7);
-      addBox(tGrp, 3.0, 0.08, 0.4, benchMat, 0, 0.44,  0.7);
-      // Food tray
-      addBox(tGrp, 0.5, 0.04, 0.38, matPhong(0xa0a0ff), -0.8, 0.79, 0);
-      addBox(tGrp, 0.5, 0.04, 0.38, matPhong(0xffa0a0), 0.5, 0.79, 0);
-      tGrp.position.set(-W/2 + 1.8, 0, tz);
-      g.add(tGrp);
     }
   }
 
@@ -1592,6 +1808,18 @@ const SFX = {
     playTone(180, 0.18, 'sawtooth', 0.3, 60);
     setTimeout(() => playTone(110, 0.26, 'sawtooth', 0.25, 40), 120);
     setTimeout(() => playTone(60,  0.45, 'square', 0.22), 240);
+  },
+  shieldUp: () => {
+    playTone(523.25, 0.12, 'sine', 0.25);
+    setTimeout(() => playTone(659.25, 0.12, 'sine', 0.25), 70);
+    setTimeout(() => playTone(783.99, 0.14, 'sine', 0.25), 140);
+    setTimeout(() => playTone(1046.50, 0.28, 'sine', 0.3), 210);
+  },
+  shieldBreak: () => {
+    playTone(1200, 0.12, 'sawtooth', 0.35, 300);
+    setTimeout(() => playTone(800, 0.15, 'square', 0.3, 150), 30);
+    setTimeout(() => playTone(350, 0.20, 'sawtooth', 0.3, 80), 70);
+    setTimeout(() => playTone(120, 0.30, 'triangle', 0.35, 40), 120);
   }
 };
 
@@ -1628,7 +1856,153 @@ let shieldActive = false;
 let powerupTimer = 0;
 let samosaMult = 1;
 let shieldMesh = null;
+let shieldGraceTimer = 0;
+let shieldShatterParticles = [];
 let energyParticle = null;
+let currentZoneIdx = 0;
+
+function createShieldMesh() {
+  const g = new THREE.Group();
+  // Inner glowing transparent energy bubble
+  const innerGeo = new THREE.SphereGeometry(1.65, 32, 24);
+  const innerMat = matPhong(0x00e5ff, {
+    transparent: true,
+    opacity: 0.38,
+    shininess: 95,
+    specular: 0x88ffff,
+    side: THREE.DoubleSide
+  });
+  const innerMesh = new THREE.Mesh(innerGeo, innerMat);
+  innerMesh.name = 'shield_inner';
+  g.add(innerMesh);
+
+  // Outer energy lattice / wireframe shell
+  const outerGeo = new THREE.SphereGeometry(1.68, 20, 14);
+  const outerMat = new THREE.MeshBasicMaterial({
+    color: 0x70ffff,
+    wireframe: true,
+    transparent: true,
+    opacity: 0.35
+  });
+  const outerMesh = new THREE.Mesh(outerGeo, outerMat);
+  outerMesh.name = 'shield_outer';
+  g.add(outerMesh);
+
+  // Equatorial energy ring
+  const ringGeo = new THREE.RingGeometry(1.58, 1.74, 32);
+  const ringMat = new THREE.MeshBasicMaterial({
+    color: 0x00ffff,
+    side: THREE.DoubleSide,
+    transparent: true,
+    opacity: 0.6
+  });
+  const ringMesh = new THREE.Mesh(ringGeo, ringMat);
+  ringMesh.rotation.x = Math.PI / 2;
+  ringMesh.name = 'shield_ring';
+  g.add(ringMesh);
+
+  g.position.y = 1.05;
+  return g;
+}
+
+function triggerShieldBreak(originPos) {
+  shieldActive = false;
+  if (shieldMesh) {
+    shieldMesh.visible = false;
+  }
+  shieldGraceTimer = 0.35; // 350ms i-frame buffer
+  SFX.shieldBreak();
+
+  // Screen micro-flash
+  const flash = document.getElementById('flash');
+  if (flash) {
+    flash.style.background = 'radial-gradient(circle, rgba(0,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%)';
+    flash.style.opacity = '0.7';
+    setTimeout(() => {
+      flash.style.opacity = '0';
+      flash.style.background = '#fff';
+    }, 120);
+  }
+
+  // 24 3D glowing energy shards
+  const shardGeo = new THREE.ConeGeometry(0.18, 0.45, 4);
+  const shardMat = matPhong(0x00ffff, {
+    emissive: 0x0088cc,
+    transparent: true,
+    opacity: 0.95
+  });
+
+  for (let i = 0; i < 24; i++) {
+    const sMesh = new THREE.Mesh(shardGeo, shardMat.clone());
+    sMesh.position.copy(originPos);
+    sMesh.position.y += (Math.random() - 0.5) * 1.2;
+    sMesh.position.x += (Math.random() - 0.5) * 0.8;
+    sMesh.position.z += (Math.random() - 0.5) * 0.8;
+
+    const angle = Math.random() * Math.PI * 2;
+    const elevation = (Math.random() - 0.3) * Math.PI;
+    const spd = 6.0 + Math.random() * 8.0;
+
+    const vel = new THREE.Vector3(
+      Math.cos(angle) * Math.cos(elevation) * spd,
+      Math.sin(elevation) * spd + 2.0,
+      Math.sin(angle) * Math.cos(elevation) * spd - (speed * 0.3)
+    );
+
+    const rotVel = new THREE.Vector3(
+      (Math.random() - 0.5) * 15,
+      (Math.random() - 0.5) * 15,
+      (Math.random() - 0.5) * 15
+    );
+
+    scene.add(sMesh);
+    shieldShatterParticles.push({
+      mesh: sMesh,
+      vel: vel,
+      rotVel: rotVel,
+      life: 0.65,
+      maxLife: 0.65
+    });
+  }
+
+  // Expanding shockwave ring
+  const shockGeo = new THREE.RingGeometry(0.3, 0.7, 32);
+  const shockMat = new THREE.MeshBasicMaterial({
+    color: 0x80ffff,
+    side: THREE.DoubleSide,
+    transparent: true,
+    opacity: 0.85
+  });
+  const shockMesh = new THREE.Mesh(shockGeo, shockMat);
+  shockMesh.position.copy(originPos);
+  shockMesh.rotation.x = -Math.PI / 2;
+  scene.add(shockMesh);
+  shieldShatterParticles.push({
+    mesh: shockMesh,
+    vel: new THREE.Vector3(0, 0, 0),
+    rotVel: new THREE.Vector3(0, 0, 0),
+    scaleSpeed: 14.0,
+    life: 0.4,
+    maxLife: 0.4,
+    isShockwave: true
+  });
+
+  updatePowerupHUD();
+}
+
+function checkZoneTransition() {
+  const zIdx = getZoneIndex(pZ);
+  if (zIdx !== currentZoneIdx) {
+    currentZoneIdx = zIdx;
+    const names = ["HALLWAY", "LIBRARY", "CAFETERIA"];
+    const el = document.getElementById('zone-notification');
+    if (el) {
+      el.textContent = "ENTERING " + names[zIdx];
+      el.style.display = 'block';
+      setTimeout(() => { if (el) el.style.display = 'none'; }, 3500);
+    }
+  }
+}
 
 let fanBladesArr = [];
 let nextChunkZ   = 0;
@@ -1871,6 +2245,9 @@ function recycleChunks() {
 //  PRECISE COLLISION DETECTION
 // ================================================================
 function checkCollisions() {
+  // Brief invincibility frames after a shield break — prevents instant re-trigger
+  if (shieldGraceTimer > 0) return false;
+
   const pHeadY = sliding ? 0.88 : (pY + 2.06);
   const pFeetY = pY;
   const px = pX;
@@ -1894,10 +2271,9 @@ function checkCollisions() {
     }
     if (hit) {
       if (shieldActive) {
-        shieldActive = false;
-        if (shieldMesh) shieldMesh.visible = false;
-        // Flash the shield to show it was consumed
-        SFX.swipe();
+        // Trigger full shield-break animation & SFX
+        const breakPos = new THREE.Vector3(pX, pY + 1.05, pZ);
+        triggerShieldBreak(breakPos);
         continue;
       }
       return true;
@@ -1906,6 +2282,7 @@ function checkCollisions() {
 
   return false;
 }
+
 
 function checkCoinPickups() {
 
@@ -2168,6 +2545,26 @@ function clearAll() {
   allCoins = [];
   chunks = [];
   fanBladesArr = [];
+
+  // Clear powerups
+  allPowerups.forEach(p => scene.remove(p.mesh));
+  allPowerups = [];
+
+  // Clear shield
+  if (shieldMesh) {
+    if (playerMesh) playerMesh.remove(shieldMesh);
+    shieldMesh = null;
+  }
+  shieldActive = false;
+  shieldGraceTimer = 0;
+  magnetActive = false;
+  energyActive = false;
+  powerupTimer = 0;
+  samosaMult = 1;
+
+  // Clear shard particles
+  shieldShatterParticles.forEach(p => scene.remove(p.mesh));
+  shieldShatterParticles = [];
 }
 
 function initGame() {
@@ -2306,6 +2703,34 @@ function update(dt) {
   recycleChunks();
 
   updatePowerups(dt);
+
+  // Shield grace timer (brief invincibility after shield breaks)
+  if (shieldGraceTimer > 0) shieldGraceTimer -= dt;
+
+  // Animate shield shard / shockwave particles
+  if (shieldShatterParticles.length > 0) {
+    shieldShatterParticles = shieldShatterParticles.filter(p => {
+      p.life -= dt;
+      if (p.life <= 0) { scene.remove(p.mesh); return false; }
+      const t = p.life / p.maxLife;
+      if (p.isShockwave) {
+        const s = 1.0 + (1.0 - t) * p.scaleSpeed * 0.12;
+        p.mesh.scale.set(s, s, s);
+        p.mesh.material.opacity = t * 0.85;
+      } else {
+        p.mesh.position.x += p.vel.x * dt;
+        p.mesh.position.y += p.vel.y * dt;
+        p.mesh.position.z += p.vel.z * dt;
+        p.vel.y += GRAVITY * dt * 0.4; // slight gravity on shards
+        p.mesh.rotation.x += p.rotVel.x * dt;
+        p.mesh.rotation.y += p.rotVel.y * dt;
+        p.mesh.rotation.z += p.rotVel.z * dt;
+        p.mesh.material.opacity = t * 0.95;
+      }
+      return true;
+    });
+  }
+
   
   if (magnetActive) {
     allCoins.forEach(c => {
@@ -2321,19 +2746,6 @@ function update(dt) {
     });
   }
 
-  
-let currentZoneIdx = 0;
-function checkZoneTransition() {
-  const zIdx = Math.floor(Math.max(0, -pZ) / 1000) % 3;
-  if (zIdx !== currentZoneIdx) {
-    currentZoneIdx = zIdx;
-    const names = ["HALLWAY", "LIBRARY", "CAFETERIA"];
-    const el = document.getElementById('zone-notification');
-    el.textContent = "ENTERING " + names[zIdx];
-    el.style.display = 'block';
-    setTimeout(() => { el.style.display = 'none'; }, 4000);
-  }
-}
 
   checkZoneTransition();
   // Rotate Fans & Coins
@@ -2491,18 +2903,23 @@ slide = function() {
 // ================================================================
 
 function activatePowerup(type) {
-  SFX.jump(); // Re-use sound
   if (type === 'shield') {
     shieldActive = true;
-    if (!shieldMesh) {
-      shieldMesh = mesh(cyl(1.5, 1.5, 0.1, 16), matPhong(0xffd700, { transparent:true, opacity:0.5 }));
-      shieldMesh.position.y = 1.0;
-      playerMesh.add(shieldMesh);
+    // Remove old shield mesh if it exists (re-collect while active)
+    if (shieldMesh) {
+      playerMesh.remove(shieldMesh);
+      shieldMesh = null;
     }
+    // Create the full glowing energy-bubble shield
+    shieldMesh = createShieldMesh();
+    playerMesh.add(shieldMesh);
     shieldMesh.visible = true;
+    SFX.shieldUp();
+    updatePowerupHUD();
   } else if (type === 'magnet') {
     magnetActive = true;
     powerupTimer = 10;
+    SFX.jump();
   } else if (type === 'energy') {
     if (!energyActive) {
       speed += 6;
@@ -2510,6 +2927,7 @@ function activatePowerup(type) {
     }
     energyActive = true;
     powerupTimer = 10;
+    SFX.jump();
   }
 }
 
